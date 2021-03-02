@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+	</head>
+
+	<body>
+
+	</body>
+	<script>
+		//				var url='https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials=A55Xv1T6YhAs8p9GxDBFCxcg&client_secret=Cced7IAvxf4YcbeNnwgZUcYbEfyK24SD';
+		//		$.get(url,function(res){
+		//			alert(res)
+		//		})
+		function coutData(dt, qs, dbz) {
+			var total = 0;
+			var n = 0;
+			for(var i = 1; i < 2000; i++) {
+				total += dt * i;
+				var zje = dbz * i;
+				var yle = zje - total;
+				if(yle > total) {
+					//					if(total>62000) break;
+					n += 1;
+					console.log(n, i, total, zje);
+					document.write(i + '\n');
+				} else {
+					total -= dt * i
+				}
+			}
+		}
+		//		coutData(2, 150, 222)
+
+		//	export default {
+		//		name: 'Layout',
+		//		components: {
+		//			Navbar,
+		//			Sidebar,
+		//			AppMain
+		//		},
+		//		mixins: [ResizeMixin],
+		//		computed: {
+		//			sidebar() {
+		//				return this.$store.state.app.sidebar
+		//			},
+		//			device() {
+		//				return this.$store.state.app.device
+		//			},
+		//			fixedHeader() {
+		//				return this.$store.state.settings.fixedHeader
+		//			},
+		//			classObj() {
+		//				return {
+		//					hideSidebar: !this.sidebar.opened,
+		//					openSidebar: this.sidebar.opened,
+		//					withoutAnimation: this.sidebar.withoutAnimation,
+		//					mobile: this.device === 'mobile'
+		//				}
+		//			}
+		//		},
+		//		methods: {
+		//			handleClickOutside() {
+		//				this.$store.dispatch('app/closeSideBar', {
+		//					withoutAnimation: false
+		//				})
+		//			}
+		//		}
+		//	}
+
+		function coutList(cb, zje) {
+			var max = 2000000;
+			var test=152100;
+			var n = 0;
+			var tot = 0;
+			var stop = 1;
+			for(var i = 1; i < max;) {
+				tot += i * cb;
+//					if(tot>8650) break;
+						var yle = zje * i - tot;
+//						if(yle > tot) {
+////	document.write(n + ' ' + i + ' '+ '\n'+ '<br>')
+//							n += 1;
+//							document.write(n + 'q ' + i + ' ' + tot + '\n' + yle + '<br>')
+//							console.log(n, i, tot, yle);
+//						} else {
+//							tot -= i * cb;
+//							i += 1;
+//						}
+					if(n>10){
+//						console.log(n, i, tot, yle);
+						var yle = zje * i - tot;
+						if(yle > tot*0.2) {
+							
+							n += 1;
+							document.write(n + 'q ' + i + ' ' + tot + '\n' + yle + '<br>')
+//	document.write(n + ' ' + i + ' '+ '\n'+ '<br>')
+							console.log(n, i, tot, yle);
+						} else {
+							tot -= i * cb;
+							i += 1;
+						}		
+					}else{
+						var yle = zje * i - tot;
+						if(yle > tot) {
+//	document.write(n + ' ' + i + ' '+ '\n'+ '<br>')
+							n += 1;
+							document.write(n + 'q ' + i + ' ' + tot + '\n' + yle + '<br>')
+							console.log(n, i, tot, yle);
+						} else {
+							tot -= i * cb;
+							i += 1;
+						}						
+					}
+
+
+			}
+		}
+		
+		
+		
+//		coutList(21.6,195)
+
+
+
+
+
+
+
+
+	function getMin(dqt,dqz,zsz){
+		var tot=0;
+		var n=1;
+		for(var i=1;;){
+			tot+=i*dqt;
+			if(tot>37000) break;
+			var yle=i*dqz-tot;
+			if(tot<zsz){
+				if(yle>tot){
+					yle=Math.round(yle);
+					var _tot=(Math.round(tot*10))/10
+					document.write(n+' '+i+' '+_tot+' '+yle+'<br>')
+					console.log(n,i,tot,i*dqz,yle);
+					n+=1;
+				}else{
+					tot-=i*dqt;
+					i++;
+				}				
+			}else{
+				if(yle>zsz){
+					yle=Math.round(yle);
+					var _tot=(Math.round(tot*10))/10
+					document.write(n+' '+i+' '+_tot+' '+yle+'<br>')
+					console.log(n,i,tot,i*dqz,yle);
+					n+=1;
+				}else{
+					tot-=i*dqt;
+					i++;
+				}				
+			}
+
+		}
+	}
+
+
+
+
+
+
+
+
+
+	
+	function getforbt(main,left,dbz){
+		var tot=0;
+		for(var n=1;n<100;n++){
+			for(var i=1;;){
+				if(n<=5){
+					tot+=i*main;					
+				}else{
+					tot+=i*left+i*main;					
+				}
+
+				tot=Math.round(tot*100)/100;
+				if(tot>20000) return;
+				var tem=i*dbz-tot;
+				tem=Math.round(tem*100)/100;
+				if(tem>tot*.1){
+					var str=n+' '+i+' '+tot+' '+tem+'<br>'
+					document.write(str)
+//					console.log(n,i,i*main,n*left,tot,tem);
+					break;
+				}else{
+					if(n<=5){
+						tot-=i*main;						
+					}else{
+						tot-=i*left+i*main;						
+					}
+
+					i++;
+					continue;
+				}
+			}
+		}}
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	getforbt(13.72,0,195)
+	
+	
+	
+		function getMax(dqt, zje, m = 50) {
+			for(var i = 1; i <= 50; i++) {
+				var tot1 = i * (i + 1) * dqt / 2;
+				var tot2 = (50 - i) * dqt * i;
+				var tot = tot1 + tot2;
+				var yle = i * zje - tot;
+				console.log(i, tot, yle)
+				//				if(yle>tot){
+				//					
+				//				}
+			}
+		}
+		//		getMax(72,1625)
+	</script>
+	<style>
+		.el-header,
+		.el-footer {
+			background-color: #B3C0D1;
+			color: #333;
+			text-align: center;
+			line-height: 60px;
+		}
+		
+		.el-aside {
+			background-color: #D3DCE6;
+			color: #333;
+			text-align: center;
+			line-height: 200px;
+		}
+		
+		.el-main {
+			background-color: #E9EEF3;
+			color: #333;
+			text-align: center;
+			line-height: 160px;
+		}
+		
+		body>.el-container {
+			margin-bottom: 40px;
+		}
+		
+		.el-container:nth-child(5) .el-aside,
+		.el-container:nth-child(6) .el-aside {
+			line-height: 260px;
+		}
+		
+		.el-container:nth-child(7) .el-aside {
+			line-height: 320px;
+		}
+	</style>
+
+</html>
