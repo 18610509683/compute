@@ -300,15 +300,45 @@ function isSpread(str){
 
 
 
+function testQthree(str){
+	var result=[];
+	all3.map((v,k)=>{
+		var re=testQType(v);
+		if(re){
+			for(var i=0;i<str.length;i++){
+				if(v.indexOf(str[i])!=-1){
+					if(result.indexOf(v)==-1){
+						result.push(v)						
+					}					
+				}
+			}
+//			if(v.indexOf(str[0])!=-1||v.indexOf(str[1])!=-1||v.indexOf(str[2])!=-1){
+//				result.push(v)
+//			}
+		}
+	})
+	console.log(result)
+}
+
+function isOk(){
+	
+}
+
+function testQType(str){
+	var arr=[];
+	for(var i=0;i<3;i++){
+		if(arr.indexOf(str[i])==-1){
+			arr.push(str[i])
+		}
+	}
+	if(arr.length<3){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+testQthree('1')
 
 
-
-
-
-
-
-
-
-var rr=isSpread('2355')
-console.log(rr)
 </script>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<script src="js/operator.js"></script>
+		<script src="js/vue-2.2.0.min.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="myFlexRow" v-for="(itm,i) in a">
+				<div class="myFlexRow">
+					<div :class="['myFlexRow']" v-for="(v,k) in itm.hm">
+						<div :class="[itm.color[k],'circle']">{{v}}</div>
+						<div :class="[itm.daxiao[k]==da?'da':'xiao']">{{itm.daxiao[k]}}</div>
+						<div :class="[itm.dansh[k]==dan?'dan':'shuang']">{{itm.dansh[k]}}</div>
+					</div>
+				</div>
+				<!--<div class="myFlexRow">
+					<div :class="[v=='大'&&'red']"  v-for="(v,k) in itm.daxiao">{{v}}</div>					
+				</div>-->
+				<!--<div class="myFlexRow">
+					<div :class="[itm.color[k]]"  v-for="(v,k) in itm.dansh">{{v}}</div>					
+				</div>-->
+			</div>
+		</div>
+	</body>
+	<style>
+		.myFlexRow {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.red {
+			background: #f00;
+		}
+		
+		.blue {
+			background: #00f;
+		}
+		
+		.gray {
+			background: #ccc;
+		}
+		
+		.green {
+			background: #00FFFF;
+		}
+		
+		.da {
+			background: #FF0000;
+		}
+		
+		.xiao {
+			background: #00FFFF;
+		}
+		
+		.dan {
+			background: #228B22;
+		}
+		
+		.shuang {
+			background: #1E90FF;
+		}
+		
+		.circle {
+			border-radius: 50%;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+		}
+	</style>
+
+</html>
+<script>
+	const da = '大',
+		xiao = "小",
+		dan = '单',
+		shuang = '双'
+	var app = new Vue({
+		el: '#app',
+		data() {
+			return {
+				a: testRes,
+			}
+		},
+		created() {
+
+		}
+	})
+</script>

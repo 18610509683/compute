@@ -11,7 +11,7 @@ var Df = function() {
 			ar.push(temp)
 		}
 		return ar;
-	}(10));
+	}(1000));
 	this.getData = function() {
 		return data;
 	};
@@ -109,8 +109,62 @@ var Df = function() {
 	};
 	this.getNext = function(str, data) {
 
+	};
+	this.getHe = function(data) {
+		var result=data.map((v, k) => {
+			var len = v.length;
+			var obj = {
+				hm: v,
+				pos: {
+
+				},
+				color: new Array(5).fill('gray'),
+				daxiao: [],
+				dansh: []
+			}
+			var da = ['9', '8', '7', '6', '5'],
+				dan = ['9', '7', '5', '3', '1']
+			for(var i = 0; i < len; i++) {
+				var ar = [i]
+				if(da.indexOf(v[i]) != -1) {
+					obj.daxiao.push('大')
+				} else {
+					obj.daxiao.push('小')
+				}
+				if(dan.indexOf(v[i]) != -1) {
+					obj.dansh.push('单')
+				} else {
+					obj.dansh.push('双')
+				}
+				for(var j = i + 1; j < len; j++) {
+					if(v[i] == v[j]) {
+						ar.push(j);
+						if(i == 0) {
+							obj.color.splice(i, 1, 'blue')
+							obj.color.splice(j, 1, 'blue')
+						} else {
+							obj.color.splice(i, 1, 'red')
+							obj.color.splice(j, 1, 'red')
+						}
+					}
+				}
+				if(!obj.pos[v[i]]) {
+					obj.pos[v[i]] = ar
+				}
+
+				//			console.log(ar)
+			}
+			return obj
+		})
+		console.log(result)
+		
+		return result
+		
+
 	}
 }
 
 var dfd = new Df();
-console.log(dfd)
+//console.log(dfd.getData())
+var data=dfd.getData();
+var testRes = dfd.getHe(data)
