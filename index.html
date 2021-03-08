@@ -42,6 +42,33 @@
 				<textarea id="left33" v-model="left3" readonly=true></textarea>
 				<div>个数：{{len2}}</div>
 			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<div class="inputBox">
+				<label for="d1">含n：</label>
+				<input onchange="getHasN(this.value)" type="text" name="" id="d1" />
+				<textarea id="d1" v-model="d1" readonly=true></textarea>
+				<div>个数：{{d1len}}</div>
+				<div for="left4">特殊</div>
+				<textarea id="left33" v-model="left4" readonly=true></textarea>
+				<div>个数：{{len4}}</div>
+			</div>
 		</div>
 	</body>
 
@@ -84,7 +111,11 @@
 				d3: '',
 				left3:'',
 				len1:0,
-				len2:0
+				len2:0,
+				d1:'',
+				d1len:0,
+				left4:'',
+				len4:0
 			}
 		},
 		methods: {
@@ -279,10 +310,8 @@
 				}
 			}
 		})
-		console.log(res)
-		return 0
+		return res
 	}
-//	arrTest('3')
 
 function isSpread(str){
 	var res=[];
@@ -338,7 +367,44 @@ function testQType(str){
 	}
 }
 
-testQthree('1')
 
 
+function getHasN(str){
+	var len=str.length;	
+	var res=[];
+	var teshu=[];
+	for(var j=0;j<len;j++){
+		var ar=all;
+		ar.map((v,k)=>{
+			var arr=[]
+			for(var i=0;i<v.length;i++){
+				if(arr.indexOf(v[i])==-1){
+					arr.push(v[i])
+				}
+			}
+			if(arr.length<4){				
+				if(arr.indexOf(str[j])!=-1){
+					if(res.indexOf(v)==-1){
+						res.push(v)
+					}
+				}
+			}
+			if(arr.length<3){
+				if(arr.indexOf(str[j])!=-1){
+					if(teshu.indexOf(v)==-1){
+						teshu.push(v)
+					}
+				}				
+			}
+		})
+	}
+
+	app.$data.d1len = res.length;
+	res=res.join(',')
+	app.$data.d1 = res;
+	app.$data.len4=teshu.length;
+	console.log(teshu)
+	teshu=teshu.join(',')
+	app.$data.left4=teshu;
+}
 </script>

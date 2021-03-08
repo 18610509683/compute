@@ -177,7 +177,7 @@
 		var tot=0;
 		for(var n=1;n<100;n++){
 			for(var i=1;;){
-				if(n<=5){
+				if(n<=3){
 					tot+=i*main;					
 				}else{
 					tot+=i*left+i*main;					
@@ -187,13 +187,13 @@
 				if(tot>20000) return;
 				var tem=i*dbz-tot;
 				tem=Math.round(tem*100)/100;
-				if(tem>tot){
+				if(tem>tot*.1){
 					var str=n+' '+i+' '+tot+' '+tem+'<br>'
 					document.write(str)
 //					console.log(n,i,i*main,n*left,tot,tem);
 					break;
 				}else{
-					if(n<=5){
+					if(n<=3){
 						tot-=i*main;						
 					}else{
 						tot-=i*left+i*main;						
@@ -256,7 +256,7 @@
 
 
 
-	getforbt(5.44,0.32,195)
+	getforbt(28.46,2.54,195)
 	
 	
 	

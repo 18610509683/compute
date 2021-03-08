@@ -15,16 +15,10 @@
 				<div class="myFlexRow">
 					<div :class="['myFlexRow']" v-for="(v,k) in itm.hm">
 						<div :class="[itm.color[k],'circle']">{{v}}</div>
-						<div :class="[itm.daxiao[k]==da?'da':'xiao']">{{itm.daxiao[k]}}</div>
-						<div :class="[itm.dansh[k]==dan?'dan':'shuang']">{{itm.dansh[k]}}</div>
+						<!--<div :class="[itm.daxiao[k]==da?'da':'xiao']">{{itm.daxiao[k]}}</div>
+						<div :class="[itm.dansh[k]==dan?'dan':'shuang']">{{itm.dansh[k]}}</div>-->
 					</div>
 				</div>
-				<!--<div class="myFlexRow">
-					<div :class="[v=='大'&&'red']"  v-for="(v,k) in itm.daxiao">{{v}}</div>					
-				</div>-->
-				<!--<div class="myFlexRow">
-					<div :class="[itm.color[k]]"  v-for="(v,k) in itm.dansh">{{v}}</div>					
-				</div>-->
 			</div>
 		</div>
 	</body>

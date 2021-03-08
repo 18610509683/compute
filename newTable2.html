@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/all.js"></script>
+		<script src="js/operator.js"></script>
+		<script src="js/dangeYL.js"></script>
+		<script src="js/vue-2.2.0.min.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="myFlexRow" style="opacity: 0.6;">
+				<div class="myFlexColumn" v-for="i in 10">
+					<div v-for="(itm,j) in DGYL[i-1]">
+						<div :class="['ylBox',it==-2&&'red',it==-1&&'black',it==-3&&'blue']" v-if="j=='yl'" v-for="it in itm">
+							{{it>0?it:(i-1)}}
+						</div>
+					</div>
+
+				</div>
+				<div class="myFlexColumn">
+					<div class="myFlexRow hmBox" v-for="(itm,i) in data">
+						<div v-for="(it,i) in itm">{{it}}</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+
+</html>
+<script>
+	console.log(DGYL)
+	console.log(DGYL['0'].yl, H4.length)
+	var app = new Vue({
+		el: '#app',
+		data() {
+			return {
+				DGYL: DGYL,
+				data: data
+			}
+		}
+	})
+</script>
+<style>
+	.myFlexColumn {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-content: flex-start;
+	}
+	
+	.ylBox {
+		width: 20px;
+		height: 20px;
+		background: #ccc;
+		margin: 4px;
+		text-align: center;
+		line-height: 20px;
+		color: #fff;
+	}
+	
+	.hmBox {
+		width: 80px;
+		height: 20px;
+		background: #aaa;
+		margin: 2px;
+		text-align: center;
+		line-height: 20px;
+		color: #fff;
+	}
+	
+	.myFlexRow {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+	.black{
+		background: #000;
+	}
+	.red {
+		background: #f00;
+	}
+	
+	.blue {
+		background: #00f;
+	}
+	
+	.gray {
+		background: #ccc;
+	}
+	
+	.green {
+		background: #00FFFF;
+	}
+	
+	.da {
+		background: #FF0000;
+	}
+	
+	.xiao {
+		background: #00FFFF;
+	}
+	
+	.dan {
+		background: #228B22;
+	}
+	
+	.shuang {
+		background: #1E90FF;
+	}
+	
+	.circle {
+		border-radius: 50%;
+		width: 20px;
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+	}
+</style>
