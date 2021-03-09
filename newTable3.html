@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/all.js"></script>
+		<script src="js/operator.js"></script>
+		<script src="js/vue-2.2.0.min.js"></script>
+		<script src="js/2myl.js"></script>
+	</head>
+	<body>
+		<div id="app" class="flex flexRow">
+			<div v-for="itm in result">
+				<div :class="['cell',it.length==4&&'ok',it>60&&'red']" class="cell" v-for="(it,k) in itm.yl">{{it}}</div>
+			</div>
+		</div>
+	</body>
+</html>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	html,body{
+		width: 100%;
+	}
+	.flex{
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start
+	}
+	.cell{
+		width: 40px;
+		height: 40px;
+		text-align: center;
+		background: #ddd;
+		margin: 2px;
+	}
+	.ok{
+		background: #aaa;
+	}
+	.red{
+		background: #aaa;
+	}
+	.flexRow{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: flex-start;
+	}
+	.flexLie{
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;		
+	}
+</style>
+<script>
+	var app=new Vue({
+		el:'#app',
+		data(){
+			return {
+				result:result
+			}
+		}
+	})
+	
+</script>

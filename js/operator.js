@@ -11,7 +11,7 @@ var Df = function() {
 			ar.push(temp)
 		}
 		return ar;
-	}(10));
+	}(100));
 	this.getData = function() {
 		return data;
 	};
