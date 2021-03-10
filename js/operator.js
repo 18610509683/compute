@@ -169,3 +169,26 @@ var dfd = new Df();
 var data=dfd.getData();
 //var testRes = dfd.getHe(data)
 var H4=dfd.getH4();
+var zh4m=dfd.getZh4m()
+console.log(zh4m)
+
+
+
+
+
+function getQ(str){
+	var ar=[];
+	all3.map((v,k)=>{
+		var num=0;
+		for(var i=0;i<v.length;i++){
+			if(str.indexOf(v[i])!=-1){
+				num+=1;
+			}
+		}
+		if(num>1){
+			ar.push(v)
+		}
+	})
+	console.log(ar)
+}
+getQ('1234')

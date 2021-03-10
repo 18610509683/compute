@@ -173,11 +173,11 @@
 
 
 	
-	function getforbt(main,left,dbz){
+	function getforbt(main,left,dbz,max){
 		var tot=0;
 		for(var n=1;n<100;n++){
 			for(var i=1;;){
-				if(n<=3){
+				if(n<=2){
 					tot+=i*main;					
 				}else{
 					tot+=i*left+i*main;					
@@ -187,21 +187,38 @@
 				if(tot>20000) return;
 				var tem=i*dbz-tot;
 				tem=Math.round(tem*100)/100;
-				if(tem>tot*.1){
-					var str=n+' '+i+' '+tot+' '+tem+'<br>'
-					document.write(str)
-//					console.log(n,i,i*main,n*left,tot,tem);
-					break;
-				}else{
-					if(n<=3){
-						tot-=i*main;						
+				if(tot>max){
+					if(tem>tot*.2){
+						var str=n+' '+i+' '+tot+' '+tem+'<br>'
+						document.write(str);
+						break;
 					}else{
-						tot-=i*left+i*main;						
-					}
-
-					i++;
-					continue;
+						if(n<=2){
+							tot-=i*main;
+						}else{
+							tot-=i*left+i*main;
+						}
+	
+						i++;
+						continue;
+					}					
+				}else{
+					if(tem>tot*.2){
+						var str=n+' '+i+' '+tot+' '+tem+'<br>'
+						document.write(str);
+						break;
+					}else{
+						if(n<=2){
+							tot-=i*main;
+						}else{
+							tot-=i*left+i*main;
+						}
+	
+						i++;
+						continue;
+					}					
 				}
+
 			}
 		}}
 	
@@ -256,7 +273,7 @@
 
 
 
-	getforbt(28.46,2.54,195)
+	getforbt(7.04,1.28,19.5,100000)
 	
 	
 	

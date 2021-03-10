@@ -6,6 +6,7 @@
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<title></title>
 		<script src="js/vue-2.2.0.min.js"></script>
+		<script src="js/all.js"></script>
 		<script type="text/javascript">
 			document.addEventListener('plusready', function() {
 				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
@@ -42,7 +43,15 @@
 				<textarea id="left33" v-model="left3" readonly=true></textarea>
 				<div>个数：{{len2}}</div>
 			</div>
-			
+			<div class="inputBox">
+				<label for="Q3">3位中2：</label>
+				<input onchange="getQ(this.value)" type="text" name="" id="va3d" />
+				<textarea id="Q3" v-model="Q3" readonly=true></textarea>
+				<div>个数：{{Q3len}}</div>
+				<div for="Q3l">3位中3</div>
+				<textarea id="Q3l" v-model="Q3Left" readonly=true></textarea>
+				<div>个数：{{Q3Leftlen}}</div>
+			</div>			
 			
 			
 			
@@ -115,7 +124,11 @@
 				d1:'',
 				d1len:0,
 				left4:'',
-				len4:0
+				len4:0,
+				Q3:'',
+				Q3len:0,
+				Q3Left:'',
+				Q3Leftlen:0
 			}
 		},
 		methods: {
@@ -141,9 +154,6 @@
 				var str2 = arr2.toString();
 				this.s = str2;
 			},
-			getTow(){
-				
-			}
 		},
 		mounted() {
 			this.changed3d()
@@ -406,5 +416,29 @@ function getHasN(str){
 	console.log(teshu)
 	teshu=teshu.join(',')
 	app.$data.left4=teshu;
+}
+
+function getQ(str){
+	var ar=[];
+	var ar2=[];
+	all3.map((v,k)=>{
+		var num=0;
+		for(var i=0;i<v.length;i++){
+			if(str.indexOf(v[i])!=-1){
+				num+=1;
+			}
+		}
+		if(num>1){
+			ar.push(v)
+		}
+		if(num>2){
+			ar2.push(v)
+		}
+	})
+	app.$data.Q3=ar.join(',');
+	app.$data.Q3len=ar.length;
+	app.$data.Q3Left=ar2.join(',');
+	app.$data.Q3Leftlen=ar2.length;
+	console.log(ar)
 }
 </script>
