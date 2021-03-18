@@ -156,7 +156,7 @@ var Df = function() {
 			}
 			return obj
 		})
-		console.log(result)
+//		console.log(result)
 		
 		return result
 		
@@ -170,7 +170,7 @@ var data=dfd.getData();
 //var testRes = dfd.getHe(data)
 var H4=dfd.getH4();
 var zh4m=dfd.getZh4m()
-console.log(zh4m)
+//console.log(zh4m)
 
 
 
@@ -189,6 +189,6 @@ function getQ(str){
 			ar.push(v)
 		}
 	})
-	console.log(ar)
+//	console.log(ar)
 }
-getQ('1234')
+

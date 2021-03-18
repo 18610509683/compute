@@ -78,4 +78,4 @@ var all3=(function(){
 	}
 	return ar;
 })()
-console.log(all3)
+

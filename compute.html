@@ -177,7 +177,7 @@
 		var tot=0;
 		for(var n=1;n<100;n++){
 			for(var i=1;;){
-				if(n<=2){
+				if(n<=3){
 					tot+=i*main;					
 				}else{
 					tot+=i*left+i*main;					
@@ -188,12 +188,12 @@
 				var tem=i*dbz-tot;
 				tem=Math.round(tem*100)/100;
 				if(tot>max){
-					if(tem>tot*.2){
+					if(tem>tot*.1){
 						var str=n+' '+i+' '+tot+' '+tem+'<br>'
 						document.write(str);
 						break;
 					}else{
-						if(n<=2){
+						if(n<=3){
 							tot-=i*main;
 						}else{
 							tot-=i*left+i*main;
@@ -203,12 +203,12 @@
 						continue;
 					}					
 				}else{
-					if(tem>tot*.2){
+					if(tem>tot*.1){
 						var str=n+' '+i+' '+tot+' '+tem+'<br>'
 						document.write(str);
 						break;
 					}else{
-						if(n<=2){
+						if(n<=3){
 							tot-=i*main;
 						}else{
 							tot-=i*left+i*main;
@@ -245,6 +245,7 @@
 
 
 
+13201818750,18729367055,
 
 
 
@@ -272,8 +273,7 @@
 
 
 
-
-	getforbt(7.04,1.28,19.5,100000)
+	getforbt(69.66,15.12,195,100000)
 	
 	
 	
