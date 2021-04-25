@@ -51,24 +51,8 @@
 				<div for="Q3l">3位中3</div>
 				<textarea id="Q3l" v-model="Q3Left" readonly=true></textarea>
 				<div>个数：{{Q3Leftlen}}</div>
-			</div>			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			</div>
+
 			<div class="inputBox">
 				<label for="d1">含n：</label>
 				<input onchange="getHasN(this.value)" type="text" name="" id="d1" />
@@ -118,17 +102,17 @@
 				d: '0033',
 				s: '34',
 				d3: '',
-				left3:'',
-				len1:0,
-				len2:0,
-				d1:'',
-				d1len:0,
-				left4:'',
-				len4:0,
-				Q3:'',
-				Q3len:0,
-				Q3Left:'',
-				Q3Leftlen:0
+				left3: '',
+				len1: 0,
+				len2: 0,
+				d1: '',
+				d1len: 0,
+				left4: '',
+				len4: 0,
+				Q3: '',
+				Q3len: 0,
+				Q3Left: '',
+				Q3Leftlen: 0
 			}
 		},
 		methods: {
@@ -223,31 +207,35 @@
 	//		}
 	//	}
 	//	app.$data.d3 = temp;
-	function gettwoMore(n){
-		var arr=[];
-		var ar=all;
-		ar.map((v,k)=>{
-			var cs=0;
-			for(var i=0;i<4;i++){
-				if(n.indexOf(v[i])!=-1){
-					cs+=1;					
+	function gettwoMore(n) {
+		var arr = [];
+		var ar = all;
+		ar.map((v, k) => {
+			var cs = 0;
+			for(var i = 0; i < 4; i++) {
+				if(n.indexOf(v[i]) != -1) {
+					cs += 1;
 				}
 			}
-			if(cs>=2){
-				arr.push(v)
+			if(cs >= 2) {
+				var tem=hasQueue(v);
+				if(tem<4){
+					arr.push(v)					
+				}
 			}
-			if(cs==1){
-				var bool=gettsh(v,n);
-				if(bool){
+			if(cs == 1) {
+				var bool = gettsh(v, n);
+				if(bool) {
 					arr.push(v)
-				}				
+				}
 			}
-
+			
 		})
 		console.log(arr)
 		return arr
 	}
-	function gettsh(str,n){
+
+	function gettsh(str, n) {
 		var res = []
 		for(var i = 0; i < 4; i++) {
 			if(res.indexOf(str[i]) == -1) {
@@ -255,190 +243,188 @@
 			}
 		}
 		res = res.sort().join('')
-		if(res.length <3) {
-			for(var k=0;k<n.length;k++){
-				if(res.indexOf(n[k])!=-1){
-					return true				
-				}				
+
+		if(res.length < 3) {
+			for(var k = 0; k < n.length; k++) {
+				if(res.indexOf(n[k]) != -1) {
+					return true
+				}
 			}
 		}
 		return false;
 	}
 
-	
-	function getThreeMore(n){
-		var ar=all;
-		var arr=[]
-		ar.map((v,k)=>{
-			var r=gettsh(v,n);
-			if(r){
+	function hasQueue(str) {
+		var res = []
+		for(var i = 0; i < 4; i++) {
+			if(res.indexOf(str[i]) == -1) {
+				res.push(str[i])
+			}
+		}
+		res = res.sort().join('');
+		return res.length;
+	}
+
+	function getThreeMore(n) {
+		var ar = all;
+		var arr = []
+		ar.map((v, k) => {
+			var r = gettsh(v, n);
+			if(r) {
 				arr.push(v)
 			}
 		})
 		return arr
 	}
-	function getTow(n){
-		var r1=gettwoMore(n)
-		var r2=getThreeMore(n)	
+
+	function getTow(n) {
+		var r1 = gettwoMore(n)
+		var r2 = getThreeMore(n)
 		app.$data.len1 = r1.length;
 		app.$data.len2 = r2.length;
-		r1=r1.join(',')
+		r1 = r1.join(',')
 
 		app.$data.d3 = r1;
 		app.$data.left3 = r2;
-		
+
 	}
 
+	function getAll() {
 
-
-
-
-
-
-
-
-
-
-
-	function getAll(){
-		
 	}
-	function arrTest(n){
-		var ar=all;
-		var res=[]
-		ar.map((v,k)=>{
-			var arr=[]
-			for(var i=0;i<v.length;i++){
-				if(arr.indexOf(v[i])==-1){
+
+	function arrTest(n) {
+		var ar = all;
+		var res = []
+		ar.map((v, k) => {
+			var arr = []
+			for(var i = 0; i < v.length; i++) {
+				if(arr.indexOf(v[i]) == -1) {
 					arr.push(v[i])
 				}
 			}
-			if(arr.length<4){
-				
-				if(arr.indexOf(n)!=-1){
-					res.push(v)					
+			if(arr.length < 4) {
+
+				if(arr.indexOf(n) != -1) {
+					res.push(v)
 				}
 			}
 		})
 		return res
 	}
 
-function isSpread(str){
-	var res=[];
-	for(var i=0;i<str.length;i++){
-		if(res.indexOf(str[i])==-1){
-			res.push(str[i])
-		}
-	}
-	if(res.length==4){
-		return true
-	}else{
-		return false;
-	}
-}
-
-
-
-function testQthree(str){
-	var result=[];
-	all3.map((v,k)=>{
-		var re=testQType(v);
-		if(re){
-			for(var i=0;i<str.length;i++){
-				if(v.indexOf(str[i])!=-1){
-					if(result.indexOf(v)==-1){
-						result.push(v)						
-					}					
-				}
+	function isSpread(str) {
+		var res = [];
+		for(var i = 0; i < str.length; i++) {
+			if(res.indexOf(str[i]) == -1) {
+				res.push(str[i])
 			}
-//			if(v.indexOf(str[0])!=-1||v.indexOf(str[1])!=-1||v.indexOf(str[2])!=-1){
-//				result.push(v)
-//			}
 		}
-	})
-	console.log(result)
-}
-
-function isOk(){
-	
-}
-
-function testQType(str){
-	var arr=[];
-	for(var i=0;i<3;i++){
-		if(arr.indexOf(str[i])==-1){
-			arr.push(str[i])
+		if(res.length == 4) {
+			return true
+		} else {
+			return false;
 		}
 	}
-	if(arr.length<3){
-		return true;
-	}else{
-		return false;
-	}
-}
 
-
-
-function getHasN(str){
-	var len=str.length;	
-	var res=[];
-	var teshu=[];
-	for(var j=0;j<len;j++){
-		var ar=all;
-		ar.map((v,k)=>{
-			var arr=[]
-			for(var i=0;i<v.length;i++){
-				if(arr.indexOf(v[i])==-1){
-					arr.push(v[i])
-				}
-			}
-			if(arr.length<4){				
-				if(arr.indexOf(str[j])!=-1){
-					if(res.indexOf(v)==-1){
-						res.push(v)
+	function testQthree(str) {
+		var result = [];
+		all3.map((v, k) => {
+			var re = testQType(v);
+			if(re) {
+				for(var i = 0; i < str.length; i++) {
+					if(v.indexOf(str[i]) != -1) {
+						if(result.indexOf(v) == -1) {
+							result.push(v)
+						}
 					}
 				}
-			}
-			if(arr.length<3){
-				if(arr.indexOf(str[j])!=-1){
-					if(teshu.indexOf(v)==-1){
-						teshu.push(v)
-					}
-				}				
+				//			if(v.indexOf(str[0])!=-1||v.indexOf(str[1])!=-1||v.indexOf(str[2])!=-1){
+				//				result.push(v)
+				//			}
 			}
 		})
+		console.log(result)
 	}
 
-	app.$data.d1len = res.length;
-	res=res.join(',')
-	app.$data.d1 = res;
-	app.$data.len4=teshu.length;
-	console.log(teshu)
-	teshu=teshu.join(',')
-	app.$data.left4=teshu;
-}
+	function isOk() {
 
-function getQ(str){
-	var ar=[];
-	var ar2=[];
-	all3.map((v,k)=>{
-		var num=0;
-		for(var i=0;i<v.length;i++){
-			if(str.indexOf(v[i])!=-1){
-				num+=1;
+	}
+
+	function testQType(str) {
+		var arr = [];
+		for(var i = 0; i < 3; i++) {
+			if(arr.indexOf(str[i]) == -1) {
+				arr.push(str[i])
 			}
 		}
-		if(num>1){
-			ar.push(v)
+		if(arr.length < 3) {
+			return true;
+		} else {
+			return false;
 		}
-		if(num>2){
-			ar2.push(v)
+	}
+
+	function getHasN(str) {
+		var len = str.length;
+		var res = [];
+		var teshu = [];
+		for(var j = 0; j < len; j++) {
+			var ar = all;
+			ar.map((v, k) => {
+				var arr = []
+				for(var i = 0; i < v.length; i++) {
+					if(arr.indexOf(v[i]) == -1) {
+						arr.push(v[i])
+					}
+				}
+				if(arr.length < 4) {
+					if(arr.indexOf(str[j]) != -1) {
+						if(res.indexOf(v) == -1) {
+							res.push(v)
+						}
+					}
+				}
+				if(arr.length < 3) {
+					if(arr.indexOf(str[j]) != -1) {
+						if(teshu.indexOf(v) == -1) {
+							teshu.push(v)
+						}
+					}
+				}
+			})
 		}
-	})
-	app.$data.Q3=ar.join(',');
-	app.$data.Q3len=ar.length;
-	app.$data.Q3Left=ar2.join(',');
-	app.$data.Q3Leftlen=ar2.length;
-	console.log(ar)
-}
+
+		app.$data.d1len = res.length;
+		res = res.join(',')
+		app.$data.d1 = res;
+		app.$data.len4 = teshu.length;
+		console.log(teshu)
+		teshu = teshu.join(',')
+		app.$data.left4 = teshu;
+	}
+
+	function getQ(str) {
+		var ar = [];
+		var ar2 = [];
+		all3.map((v, k) => {
+			var num = 0;
+			for(var i = 0; i < v.length; i++) {
+				if(str.indexOf(v[i]) != -1) {
+					num += 1;
+				}
+			}
+			if(num > 1) {
+				ar.push(v)
+			}
+			if(num > 2) {
+				ar2.push(v)
+			}
+		})
+		app.$data.Q3 = ar.join(',');
+		app.$data.Q3len = ar.length;
+		app.$data.Q3Left = ar2.join(',');
+		app.$data.Q3Leftlen = ar2.length;
+		console.log(ar)
+	}
 </script>

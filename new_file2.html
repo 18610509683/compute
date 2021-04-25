@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/all.js"></script>
+		<script src="js/allQ.js"></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function getData(str1,str2){
+		var ar1=str1.toString().split('');
+		var ar2=str2.toString().split('');
+		console.log(ar1)
+		var data=[]
+		all.map((v,k)=>{
+			var r1=false,r2=false;
+			ar1.map((n,kk)=>{
+				var c=getCs(v,n)
+				if(c>1){
+					r1=true;
+					if(data.indexOf(v)==-1){
+						data.push(v)
+					}
+				}
+			})
+
+//			console.log(v)
+		})
+//		console.log(data)
+		var data2=[]
+		data.map((v,k)=>{
+			ar2.map((n,kk)=>{
+				var c=getCs(v,n)
+				if(c==1){
+					if(data2.indexOf(v)==-1){
+						data2.push(v)						
+					}
+				}
+			})
+		})
+		console.log(data2)
+	}
+	function getCs(v,n){
+		var cs=0;
+		for(var i=0;i<v.length;i++){
+			if(v[i]==n){
+				cs+=1;
+			}
+		}
+		return cs;
+	}
+//console.log(allQ)
+function getNeed(str){
+	str=str.toString();
+	var ar=[];
+	var arr=[];
+	allQ.map((v,k)=>{
+		var cs=0;
+		for(let i=0;i<v.length;i++){
+			if(str.indexOf(v[i])!=-1){
+				cs+=1;
+			}
+		}
+		if(cs>2){
+			ar.push(v)
+		}
+	})
+	console.log(ar)
+}
+//getNeed(12345)
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	getData(12345,12345)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getall(str){
+	str=str.toString()
+	var res=[];
+		allQ.map((v,k)=>{
+			for(let i=0;i<str.length;i++){
+				if(v.indexOf(str[i])!=-1){
+					var cs=getC(v,str[i]);
+					if(cs>1){
+						if(res.indexOf(v)==-1){
+							res.push(v)
+						}						
+					}
+
+				}
+			}
+		})
+	
+	console.log(res)
+}
+
+function getC(v,n){
+	var c=0;
+	for(let i=0;i<v.length;i++){
+		if(v[i]==n){
+			c+=1;
+		}
+	}
+	return c;
+}
+
+
+
+
+
+
+
+
+
+
+
+getall(1)
+</script>
