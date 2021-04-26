@@ -188,7 +188,7 @@
 				var tem=i*dbz-tot;
 				tem=Math.round(tem*100)/100;
 				if(tot>max){
-					if(tem>tot*.2){
+					if(tem>tot){
 						var str=n+' '+i+' '+tot+' '+tem+'<br>'
 						document.write(str);
 						break;
@@ -203,7 +203,7 @@
 						continue;
 					}					
 				}else{
-					if(tem>tot*.2){
+					if(tem>tot){
 						var str=n+' '+i+' '+tot+' '+tem+'<br>'
 						document.write(str);
 						break;
@@ -273,8 +273,9 @@
 
 
 
-	getforbt(28.46,11.8,195,100000)
+//	getforbt(28.46,11.8,195,100000)
 	
+	getforbt(2,0,19.5,100000)
 	
 	
 		function getMax(dqt, zje, m = 50) {

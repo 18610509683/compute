@@ -7,13 +7,6 @@
 		<title></title>
 		<script src="js/vue-2.2.0.min.js"></script>
 		<script src="js/all.js"></script>
-		<script type="text/javascript">
-			document.addEventListener('plusready', function() {
-				//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-
-			});
-		</script>
-		<script src="js/all.js"></script>
 	</head>
 	<style>
 		.inputBox {
@@ -35,6 +28,10 @@
 				<textarea id="va3d" v-model="s" readonly=true></textarea>
 			</div>
 			<div class="inputBox">
+				<label for="vaQ3t">特殊Q3：</label>
+				<textarea id="vaQ3t" v-model="Q3t" readonly=true></textarea>
+			</div>
+			<div class="inputBox">
 				<label for="va3d">单个：</label>
 				<input onchange="getTow(this.value)" type="text" name="" id="va3d" />
 				<textarea id="va3d" v-model="d3" readonly=true></textarea>
@@ -43,6 +40,15 @@
 				<textarea id="left33" v-model="left3" readonly=true></textarea>
 				<div>个数：{{len2}}</div>
 			</div>
+			<div class="inputBox">
+				<label for="d1">含n：</label>
+				<input onchange="getHasN(this.value)" type="text" name="" id="d1" />
+				<textarea id="d1" v-model="d1" readonly=true></textarea>
+				<div>个数：{{d1len}}</div>
+				<div for="left4">特殊</div>
+				<textarea id="left33" v-model="left4" readonly=true></textarea>
+				<div>个数：{{len4}}</div>
+			</div>			
 			<div class="inputBox">
 				<label for="Q3">3位中2：</label>
 				<input onchange="getQ(this.value)" type="text" name="" id="va3d" />
@@ -53,20 +59,14 @@
 				<div>个数：{{Q3Leftlen}}</div>
 			</div>
 
-			<div class="inputBox">
-				<label for="d1">含n：</label>
-				<input onchange="getHasN(this.value)" type="text" name="" id="d1" />
-				<textarea id="d1" v-model="d1" readonly=true></textarea>
-				<div>个数：{{d1len}}</div>
-				<div for="left4">特殊</div>
-				<textarea id="left33" v-model="left4" readonly=true></textarea>
-				<div>个数：{{len4}}</div>
-			</div>
+
 		</div>
 	</body>
 
 </html>
 <script>
+	var Q2Q=all2m.concat(allB).join(',');
+	console.log(Q2Q)	
 	function getCs(str, ar) {
 		var cs = 0;
 		for(var i = 0; i < 4; i++) {
@@ -112,7 +112,8 @@
 				Q3: '',
 				Q3len: 0,
 				Q3Left: '',
-				Q3Leftlen: 0
+				Q3Leftlen: 0,
+				Q3t:'',
 			}
 		},
 		methods: {
@@ -134,13 +135,13 @@
 						}
 					}
 				}
-				console.log(arr2.length)
 				var str2 = arr2.toString();
 				this.s = str2;
 			},
 		},
 		mounted() {
-			this.changed3d()
+			this.changed3d();
+			this.Q3t=Q2Q;
 		}
 	})
 
@@ -231,7 +232,6 @@
 			}
 			
 		})
-		console.log(arr)
 		return arr
 	}
 
@@ -398,10 +398,11 @@
 		app.$data.d1len = res.length;
 		res = res.join(',')
 		app.$data.d1 = res;
-		app.$data.len4 = teshu.length;
-		console.log(teshu)
-		teshu = teshu.join(',')
-		app.$data.left4 = teshu;
+		var arrr=gettwoMore(str);
+		
+		app.$data.len4 = arrr.length;
+		arrr = arrr.join(',')
+		app.$data.left4 = arrr;
 	}
 
 	function getQ(str) {
@@ -427,4 +428,5 @@
 		app.$data.Q3Leftlen = ar2.length;
 		console.log(ar)
 	}
+
 </script>
