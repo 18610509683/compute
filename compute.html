@@ -177,7 +177,7 @@
 		var tot=0;
 		for(var n=1;n<100;n++){
 			for(var i=1;;){
-				if(n<=3){
+				if(n<=0){
 					tot+=i*main;					
 				}else{
 					tot+=i*left+i*main;					
@@ -188,7 +188,7 @@
 				var tem=i*dbz-tot;
 				tem=Math.round(tem*100)/100;
 				if(tot>max){
-					if(tem>tot){
+					if(tem>0){
 						var str=n+' '+i+' '+tot+' '+tem+'<br>'
 						document.write(str);
 						break;
@@ -203,7 +203,7 @@
 						continue;
 					}					
 				}else{
-					if(tem>tot){
+					if(tem>0){
 						var str=n+' '+i+' '+tot+' '+tem+'<br>'
 						document.write(str);
 						break;
@@ -273,9 +273,9 @@
 
 
 
-//	getforbt(28.46,11.8,195,100000)
+	getforbt(36.16,5.44,195,100000)
 	
-	getforbt(2,0,19.5,100000)
+//	getforbt(2,0,19.5,100000)
 	
 	
 		function getMax(dqt, zje, m = 50) {
