@@ -23,6 +23,13 @@
 				<div for="left3">剩余</div>
 				<textarea id="left3" v-model="c" readonly=true></textarea>
 			</div>
+						<div class="inputBox">
+				<label for="val11">输入：</label>
+				<input onchange="changed11(this.value,3)" type="text" name="" id="val11" value="" />
+				<textarea v-model="a11" readonly=true></textarea>
+				<div for="left11">all</div>
+				<textarea id="left11" v-model="c11" readonly=true></textarea>
+			</div>
 			<div class="inputBox">
 				<label for="va3d">特殊H4：</label>
 				<textarea id="va3d" v-model="s" readonly=true></textarea>
@@ -66,7 +73,7 @@
 </html>
 <script>
 	var Q2Q=all2m.concat(allB).join(',');
-	console.log(Q2Q)	
+	console.log(all)	
 	function getCs(str, ar) {
 		var cs = 0;
 		for(var i = 0; i < 4; i++) {
@@ -114,6 +121,8 @@
 				Q3Left: '',
 				Q3Leftlen: 0,
 				Q3t:'',
+				a11:'',
+				c11:''
 			}
 		},
 		methods: {
@@ -430,5 +439,52 @@
 		app.$data.Q3Leftlen = ar2.length;
 		console.log(ar)
 	}
+//11
+	var all11=(function(){
+		var arr=[];
+		for(let i=11;i>0;i--){
+			for(let j=i-1;j>0;j--){
+				for(let k=j-1;k>0;k--){
+					let a=i<10?'0'+i:''+i;
+					let b=j<10?'0'+j:''+j;
+					let c=k<10?'0'+k:''+k;
+					let d=a+' '+b+' '+c;
+					arr.push(d)
+				}
+			}
+		}
+		return arr
+	})();
 
+	function changed11(str){
+		str=str.toString();
+		var ar=str.split('');
+		ar=ar.map((v,k)=>{
+			if(v=='i'){
+				return '11'
+			}else if(v=='o'){
+				return '10'				
+			}else{
+				return v<10?'0'+v:''+v;				
+			}
+		})
+		var res=[],res2=[];
+		all11.map((v,k)=>{
+			var c=0;
+			ar.map((vv,kk)=>{
+				if(v.indexOf(vv)!=-1){
+					c+=1;
+				}
+			})
+			if(c>1){
+				res.push(v)
+			}
+			if(c>2){
+				res2.push(v)
+			}
+		})
+		app.$data.a11=res.join(',');
+		app.$data.c11=res2.join(',');
+		console.log(res.length)
+	}
 </script>

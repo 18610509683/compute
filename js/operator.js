@@ -167,7 +167,7 @@ var Df = function() {
 var dfd = new Df();
 //console.log(dfd.getData())
 var data=dfd.getData();
-//var testRes = dfd.getHe(data)
+var testRes = dfd.getHe(data)
 var H4=dfd.getH4();
 var zh4m=dfd.getZh4m()
 //console.log(zh4m)
