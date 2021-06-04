@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/all5.js"></script>
+		<script src="js/allQ.js"></script>
+		<script src="js/all.js"></script>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+function getThree(n){
+	var ar=[];
+	all5.map((v,k)=>{
+		var l=v.length;
+		var mp=new Map();
+		for(let i=0;i<l;i++){
+			let c=1;
+			for(let j=i+1;j<l;j++){
+				if(v[i]==v[j]){
+					c+=1;
+				}
+			}
+			if(!mp.has(v[i])){
+				mp.set(v[i],c)
+			}
+		}
+		let num=mp.get(v[n]);
+		let tem=[...mp.values()];
+		if(tem.sort().join('')=='122'&&num==1){
+			ar.push(v)
+		}		
+	})
+	console.log(ar)
+}
+getThree(1)
+</script>

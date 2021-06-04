@@ -4,7 +4,39 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<script src="js/all5.js"></script>
+		<script src="js/allQ.js"></script>
 	</head>
+	<style>
+		html,body{
+			width:100%;
+			height: 100%;
+			display: flex;
+		}
+	</style>
 	<body>
+
 	</body>
 </html>
+<script>
+//	console.log(allQ)
+	function getNeed(str){
+		var ar=[];
+		allQ.map((v,k)=>{
+			var c=0;
+			for(let i=0;i<str.length;i++){
+				if(v.indexOf(str[i])!=-1){
+					c+=1;
+				}
+			}
+			if(c>1){
+				if(ar.indexOf(v)==-1){
+					ar.push(v)
+					
+				}
+
+			}
+		})
+		console.log(ar)
+	}
+	getNeed('123')
+</script>

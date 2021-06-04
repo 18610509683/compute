@@ -20,9 +20,9 @@ all5.map((v,k)=>{
 			ar.push(v[i])
 		}
 	}
-	if(ar.length==3){
+	if(ar.length<=3){
 //	console.log(ar)
-		if(v.indexOf('3')!=-1){
+		if(v.indexOf('3')!=-1&&v.indexOf('4')!=-1){
 			allt.push(v)
 			
 		}
@@ -30,4 +30,4 @@ all5.map((v,k)=>{
 	}
 
 })
-console.log(allt)
+//console.log(allt)
