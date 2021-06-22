@@ -21,7 +21,22 @@
 	
 	
 	
-	
+	function getTow(str){
+		str=str.toString();
+		var ar=[];
+		all.map((v,k)=>{
+			var c=0;
+			for(let i=0;i<v.length;i++){
+				if(str.indexOf(v[i])!=-1){
+					c+=1;
+				}
+			}
+			if(c>1){
+				ar.push(v)
+			}
+		})
+		console.log(ar.length)
+	}
 	
 	
 	
@@ -54,5 +69,6 @@ function getThree(n){
 	})
 	console.log(ar)
 }
-getThree(1)
+//getThree(1)
+getTow(12345)
 </script>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<label for="ipt1">搜索</label>
+			<input v-model="ipt" id="ipt1" @change="search" />
+			<div v-for="(v,k) in dataAr">
+				<div>{{v.h4ylt}}</div>
+			</div>
+		</div>
+
+		<script>
+			var data = (function(n) {
+				var ar = [];
+				for(var i = 0; i < n; i++) {
+					var temp = Math.round(Math.random() * 100000).toString();
+					var str = '00000';
+					var len = temp.length;
+					var st = str.substr(len);
+					temp = st + temp;
+					ar.push(temp)
+				}
+				return ar;
+			}(100));
+
+			function getInfo(ks, ar) {
+				if(ar.length == 0) return;
+				var arr = [];
+				var yl=[];
+				var len = ar[0].length;
+				var lens=ar.length;
+				var temp = -1;
+
+				for(let i = 0; i < lens; i++) {
+					var c = 0;
+
+					for(let j = 1; j < len; j++) {
+						if(ks.indexOf(ar[i][j]) != -1) {
+							c += 1;
+						}
+					}
+					if(c > 2) {
+						yl.push(i-temp-1);
+						temp = i;
+						let ms = '';
+						if(c > 3) {
+							ms = ''
+						}
+						arr.push(ms + ar[i])
+					} else {
+						arr.push(i - temp)
+						if(i==lens-1){
+							yl.push(i-temp)
+						}
+					}
+
+				}
+
+				return [arr,yl];
+			}
+			var dataAr = [];
+			(function(D) {
+				var len=D.length;
+				D.forEach((v, k) => {
+					let q3 = v.substr(0, 3);
+					let z3 = v.substr(1, 3);
+					let h3 = v.substr(2, 3);
+					let h4 = v.substr(1);
+					var obj = obj || {};
+					obj.q3 = q3;
+					obj.z3 = z3;
+					obj.h3 = h3;
+					obj.h4 = h4;
+					obj.hm = v;
+					if(k!=len-1){
+						let left=D.slice(k+1);
+						let ylt=getInfo(h4,left);
+						obj.h4ylt=ylt[0];
+						obj.h4yl=ylt[1];
+					}else{
+						obj.h4ylt=[0];
+						obj.h4yl=[0];
+					}
+					dataAr.push(obj)
+				})
+			})(data);
+			console.log(dataAr[dataAr.length-1])
+			var app=new Vue({
+				el:'#app',
+				data(){
+					return {
+						ipt:'',
+						dataAr:dataAr
+					}
+				},
+				methods:{
+					search(){
+						var ipt=this.ipt;
+						var ar=[];
+						if(ipt.length==1){
+							dataAr.map((v,k)=>{
+								if(v.h4.indexOf(ipt)!=-1){
+									ar.push(v)
+									console.log(v.h4yl)
+									
+								}
+							})
+						}else if(ipt.length==3){
+							let str1=ipt.substr(0,2),str2=ipt.substr(1,2);
+							dataAr.map((v,k)=>{
+								if((v.h4.indexOf(str1[0])!=-1&&v.h4.indexOf(str1[1])!=-1)||(v.h4.indexOf(str2[0])!=-1&&v.h4.indexOf(str2[1])!=-1)){
+									ar.push(v);
+									console.log(v)
+								}
+							})
+						}
+						console.log(ar)
+						this.dataAr=ar;
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

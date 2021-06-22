@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="j610.js"></script>
+	</head>
+	<body>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<script>
+			data=data.split(',')
+			data.map((v,k)=>{
+				var r=getType(v);
+				if(k<data.length-1){
+					var r2=getType(data[k+1]);
+					if(r[0]==5&&r2[1]<=3){
+//						console.log(v,data[k+1])
+					}					
+				}
+
+
+
+			})
+			function getType(str){
+				var s1=str,s2=str.substr(1);
+				var len1=s1.length,len2=s2.length;
+				var ar1=[],ar2=[];
+				for(let i=0;i<len1;i++){
+					if(ar1.indexOf(s1[i])==-1){
+						ar1.push(s1[i])
+					}
+				}
+				for(let i=0;i<len2;i++){
+					if(ar2.indexOf(s2[i])==-1){
+						ar2.push(s2[i])
+					}
+				}
+				return [ar1.length,ar2.length]
+			}
+			
+			var map=new Map([[1,2],[3,4]])
+			map.forEach((v,k)=>{
+				console.log(v,k)
+			})
+			for(let i of map.entries()){
+				console.log(typeof i)
+			}
+		</script>
+	</body>
+</html>
