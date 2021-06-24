@@ -126,6 +126,78 @@
 					}
 				}
 			})
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+						var arr=[];
+			function getInfo(D){
+				D.map((v,k)=>{
+					let str0=str=v.substr(1);
+
+					str=new Set(str.split(''))
+					str=[...str].sort().join('');
+					
+					if(str.length==3){
+						var ar=[str];
+						for(let i=k-1;i>-1;i--){
+							let S=D[i].substr(1);
+							S=new Set(S.split(''));
+							S=[...S].sort().join('');
+							let has=true;
+							for(let j=0;j<4;j++){
+								if(S.indexOf(str0[j])==-1){
+									has=false;
+								}
+							}
+							if(has){
+
+								ar.push(S)
+
+								if(S.length==4){
+									for(let i=0;i<4;i++){
+										if(str.indexOf(S[i])==-1){
+//											getNext(tem,S[i],str);
+											
+										}
+									}
+
+									break;								
+								}
+
+							}
+						}
+						if(ar.length==1){
+								let tem=D.slice(k+1);
+							getNext(tem,str,str);
+							
+						}
+					}
+					arr[k]=str
+				})
+			}
+			function getNext(tem,str,s){
+				tem.some((v,k)=>{
+					var c=0;
+					for(let i=0;i<4;i++){
+						if(str.indexOf(v[i])!=-1){
+							c+=1;
+						}
+					}
+					if(c>2){
+						console.log(k,str,s);
+						return true;
+					}
+				})
+			}
+			getInfo(data)
 		</script>
 	</body>
 
